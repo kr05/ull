@@ -22,12 +22,12 @@ class UllServer {
     this.acceptUpload()
     this.acceptDownload()
 
-    this.app.post('/start', (req, res, next) => {
+    this.app.post('/start', (req, res, next) => {          
       if (this.instance) {
         return res.status(200).json({ message: 'already started' })
       }
       this.startTranscoding()
-      return res.status(200).json({ message: `started manifest is at http://localhost:${PORT}/manifest.mpd` })
+      return res.status(200).json({ message: `started manifest is at http://localhost:${PORT}/index.mpd` })
     })
 
     this.app.post('/stop', (req, res, next) => {

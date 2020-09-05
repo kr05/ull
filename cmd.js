@@ -1,7 +1,7 @@
 module.exports = [
-  `-re`,
-  `-f`, `lavfi`,
-  `-i`, `testsrc2=size=1280x720:rate=24`,
+  `-f`, `flv`,
+  `-listen`, `1`,
+  `-i`, `rtmp://localhost:3104/live/app`,
   `-pix_fmt`, `yuv420p`,
   `-map`, `0:v`,
   `-c:v`, `libx264`, `-tune`, `zerolatency`, `-profile:v`, `high`, `-preset`, `veryfast`, `-bf`, `0`, `-refs`, `3`, `-sc_threshold`, `0`,
@@ -22,5 +22,5 @@ module.exports = [
   `-remove_at_exit`, `1`,
   `-adaptation_sets`, `id=0,streams=v id=1,streams=a`,
   `-f`, `dash`,
-  `http://localhost:3104/manifest.mpd`
+  `http://localhost:3104/index.mpd`
 ]
